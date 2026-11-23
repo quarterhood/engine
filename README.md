@@ -63,7 +63,8 @@ changed. The contract holds no funds and has no upgrade path.
   `game` and `mode` as left-aligned bytes32 strings. Pairs are hashed sorted (OpenZeppelin style).
 - `GET https://quarterhood.com/api/commits/<week>` returns the rows and root; `/proof?run=<id>` returns a row's leaf
   and proof for `verify(week, leaf, proof)` on the contract.
-- `cd contracts && forge test` (includes a test that the site's TypeScript tree matches the contract).
+- `cd contracts && forge install foundry-rs/forge-std@v1.17.0 --no-git && forge test` (forge-std is the only
+  dependency and is not vendored; the tests include a check that the site's TypeScript tree matches the contract).
 
 ## Tests
 
