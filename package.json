@@ -12,6 +12,6 @@
   },
   "scripts": {
     "verify": "node bin/verify.ts",
-    "test": "node --test "test/*.test.ts""
+    "test": "node --test 'test/*.test.ts'"
   }
 }
