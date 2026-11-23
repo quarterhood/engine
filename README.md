@@ -52,7 +52,9 @@ Ranked top-3 scores from players with fewer than 5 scored runs also wait for rev
 
 ## Weekly boards on Robinhood Chain
 
-`contracts/src/QuarterhoodBoards.sol` locks each finished week. Every Monday after the payout, the site hashes the
+`contracts/src/QuarterhoodBoards.sol` locks each finished week. Deployed on Robinhood Chain (chain id 4663) at
+[`0x5b557ae99c91ddA8cca6fBADB86AD5a195a9Ad02`](https://robinhoodchain.blockscout.com/address/0x5b557ae99c91ddA8cca6fBADB86AD5a195a9Ad02),
+source verified on Sourcify (exact match), operator `0x29bD9C93996A9A3d5ECcCD2EdFFdad939525afE7`. Every Monday after the payout, the site hashes the
 top 25 rows of every ranked board (game, mode, rank, player, score, run id, replay hash) into one Merkle root, and
 the operator wallet writes it with `commit(week, root, boards, rows)`. A week can be committed once and never
 changed. The contract holds no funds and has no upgrade path.
