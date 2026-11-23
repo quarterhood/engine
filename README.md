@@ -53,7 +53,7 @@ Ranked top-3 scores from players with fewer than 5 scored runs also wait for rev
 ## Tests
 
 ```
-node --test test/
+node --test "test/*.test.ts"
 ```
 
 Golden replays (`fixtures/golden.json`) pin the score, frame count and state hash of fixed inputs for every game,
