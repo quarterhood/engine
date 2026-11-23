@@ -50,6 +50,19 @@ Rendering, sound, the website and the server's secrets. The `flags()` checks in 
 they mark runs that look scripted, and those runs wait for a person to review them before they reach a board.
 Ranked top-3 scores from players with fewer than 5 scored runs also wait for review.
 
+## Weekly boards on Robinhood Chain
+
+`contracts/src/QuarterhoodBoards.sol` locks each finished week. Every Monday after the payout, the site hashes the
+top 25 rows of every ranked board (game, mode, rank, player, score, run id, replay hash) into one Merkle root, and
+the operator wallet writes it with `commit(week, root, boards, rows)`. A week can be committed once and never
+changed. The contract holds no funds and has no upgrade path.
+
+- Leaf: `keccak256(keccak256(abi.encode(week, game, mode, rank, player, score, runId, replayHash)))`, with `week`,
+  `game` and `mode` as left-aligned bytes32 strings. Pairs are hashed sorted (OpenZeppelin style).
+- `GET https://quarterhood.com/api/commits/<week>` returns the rows and root; `/proof?run=<id>` returns a row's leaf
+  and proof for `verify(week, leaf, proof)` on the contract.
+- `cd contracts && forge test` (includes a test that the site's TypeScript tree matches the contract).
+
 ## Tests
 
 ```
