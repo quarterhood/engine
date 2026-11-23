@@ -1,0 +1,17 @@
+{
+  "name": "quarterhood-engine",
+  "version": "1.0.0",
+  "description": "The deterministic game code behind Quarterhood, and a verifier for any scored run.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=23.6"
+  },
+  "bin": {
+    "quarterhood-verify": "bin/verify.ts"
+  },
+  "scripts": {
+    "verify": "node bin/verify.ts",
+    "test": "node --test test/"
+  }
+}
